@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam</title>
+</head>
+<body>
+    <h1>{{ course_code }} Exam</h1>
+    <form method="POST">
+        {% for question in questions %}
+            <p>{{ question[2] }}</p>
+            <input type="radio" name="question_{{ question[0] }}" value="A"> {{ question[3] }}<br>
+            <input type="radio" name="question_{{ question[0] }}" value="B"> {{ question[4] }}<br>
+            <input type="radio" name="question_{{ question[0] }}" value="C"> {{ question[5] }}<br>
+            <input type="radio" name="question_{{ question[0] }}" value="D"> {{ question[6] }}<br>
+        {% endfor %}
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

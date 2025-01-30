@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course[1] }} - Course Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ course[1] }} - Course Details</h1>
+        <p>Course Code: {{ course[0] }}</p>
+        <p>Staff Handling: {{ course[2] }}</p>
+
+        <h2>MCQ Questions</h2>
+        <form method="POST">
+            {% for question in mcq_questions %}
+            <div>
+                <p>{{ question[2] }}</p>
+                <label>
+                    <input type="radio" name="question_{{ question[0] }}" value="a"> {{ question[3] }}
+                </label>
+                <label>
+                    <input type="radio" name="question_{{ question[0] }}" value="b"> {{ question[4] }}
+                </label>
+                <label>
+                    <input type="radio" name="question_{{ question[0] }}" value="c"> {{ question[5] }}
+                </label>
+                <label>
+                    <input type="radio" name="question_{{ question[0] }}" value="d"> {{ question[6] }}
+                </label>
+            </div>
+            {% endfor %}
+            <button type="submit">Submit Answers</button>
+        </form>
+    </div>
+</body>
+</html>

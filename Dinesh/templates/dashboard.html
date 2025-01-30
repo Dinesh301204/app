@@ -10,11 +10,28 @@
     <div class="container">
         <h1>Welcome, {{ user }}!</h1>
         <p>This is your dashboard.</p>
-        <ul>
-            <li><a href="{{ url_for('index') }}">Home</a></li>
-            <li><a href="{{ url_for('staff_login') }}">Staff Login</a></li>
-            <li><a href="{{ url_for('student_login') }}">Student Login</a></li>
-        </ul>
+
+        {% if is_student %}
+        <h2>Courses</h2>
+        <center>
+        <table border="1">
+            <tr>
+                <th>COURSE CODE</th>
+                <th>COURSE NAME</th>
+                <th>STAFF HANDLING</th>
+            </tr>
+            {% for course in courses %}
+            <tr>
+                <td><a href="{{ url_for('course_details', course_code=course[1], user=user) }}">{{ course[1] }}</a></td>
+                <td>{{ course[2] }}</td>
+                <td>{{ course[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        </center>
+        {% else %}
+        <p>You are logged in as a staff member.</p>
+        {% endif %}
     </div>
 </body>
 </html>
